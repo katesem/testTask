@@ -8,21 +8,22 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.time.Duration;
 
 
 public class LoginPageUITest {
-    protected static WebDriver driver;
-    public static final String NO_ACCOUNT_FOUND_MESSAGE = "No account found with that username.";
-    public static final String PLEASE_ENTER_USERNAME_MESSAGE = "Please enter username.";
-    public static final String LOGIN_HEADLINE_TEXT = "AQA internship Login";
-    public static final String USERNAME = "testUser";
-    public static final String PASSWORD = "12345ff";
+    private static WebDriver driver;
+    private static final String NO_ACCOUNT_FOUND_MESSAGE = "No account found with that username.";
+    private static final String PLEASE_ENTER_USERNAME_MESSAGE = "Please enter username.";
+    private static final String LOGIN_HEADLINE_TEXT = "AQA internship Login";
+    private static final String USERNAME = "testUser";
+    private static final String PASSWORD = "12345ff";
 
     @BeforeClass
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\katew\\Downloads\\chromedriver\\chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.get("https://www.pecodesoftware.com/qa-portal/registerlogin/registerlogin.php");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
